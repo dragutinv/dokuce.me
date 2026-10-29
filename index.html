@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dokuće — Praćenje pošiljke onlajn | dokuce.me</title>
+<meta name="description" content="Prati svoju pošiljku u realnom vremenu — unesi tracking kod i saznaj gdje se nalazi. Agencije za transfer pošiljki mogu da ažuriraju status direktno na dokuce.me.">
+<link rel="canonical" href="https://dokuce.me/">
+<link rel="alternate" hreflang="sr" href="https://dokuce.me/">
+<link rel="alternate" hreflang="en" href="https://dokuce.me/en/">
+<link rel="alternate" hreflang="x-default" href="https://dokuce.me/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="dokuće">
+<meta property="og:title" content="dokuće — Praćenje pošiljke onlajn">
+<meta property="og:description" content="Unesi tracking kod i saznaj gdje se tačno nalazi tvoja pošiljka. Jednostavno, brzo, do kuće.">
+<meta property="og:url" content="https://dokuce.me/">
+<meta property="og:locale" content="sr_ME">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#ff6b4a">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "dokuće",
+  "alternateName": "dokuce.me",
+  "url": "https://dokuce.me/",
+  "logo": "https://dokuce.me/assets/logo.svg",
+  "description": "Servis za praćenje pošiljki i transfera novca — prototip za ispitivanje interesovanja korisnika.",
+  "sameAs": []
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <img src="/assets/logo.svg" alt="" class="logo-mark">
+      <span>dokuće<small>dokuce.me</small></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Glavna navigacija">
+      <a href="#kako-radi">Kako radi</a>
+      <a href="#prednosti">Prednosti</a>
+      <a href="/agencije.html">Za agencije</a>
+      <div class="lang-switch" aria-label="Izbor jezika">
+        <a href="/" class="active">SR</a>
+        <a href="/en/">EN</a>
+      </div>
+    </nav>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Otvori meni">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" data-nav-mobile aria-label="Mobilna navigacija">
+    <a href="#kako-radi">Kako radi</a>
+    <a href="#prednosti">Prednosti</a>
+    <a href="/agencije.html">Za agencije</a>
+    <div class="lang-switch">
+      <a href="/" class="active">SR</a>
+      <a href="/en/">EN</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="proto-badge">🚧 Prototip — testiramo interesovanje</span>
+        <h1>Prati svoju pošiljku, <span class="accent">pravo do kuće.</span></h1>
+        <p class="lead">Unesi broj pošiljke i odmah vidi gdje se trenutno nalazi — bez čekanja na telefonu i bez gužve u agenciji.</p>
+
+        <div class="track-card">
+          <form data-track-form class="track-form">
+            <label for="track-code" class="visually-hidden">Broj pošiljke</label>
+            <input type="text" id="track-code" data-track-input placeholder="Unesi broj pošiljke, npr. DK2026100123" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Prati pošiljku</button>
+          </form>
+          <p class="track-hint">Nemaš kod pri ruci? <button type="button" data-demo-code>Probaj demo pošiljku</button></p>
+          <p class="track-error" data-track-error></p>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img src="/assets/hero.svg" alt="Ilustracija pošiljke na putu do kuće" width="420" height="420">
+      </div>
+    </div>
+  </section>
+
+  <section class="result-section" data-result-section>
+    <div class="container">
+      <div class="result-card">
+        <div class="result-head" data-result-head>
+          <div>
+            <h2>Pošiljka <span class="result-code" data-result-code></span></h2>
+            <div><strong>Pošiljalac:</strong> <span data-result-from></span> · <strong>Primalac:</strong> <span data-result-to></span></div>
+            <div><strong>Agencija:</strong> <span data-result-agency></span></div>
+          </div>
+          <span class="status-pill" data-status-pill></span>
+        </div>
+        <ul class="timeline" data-timeline></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kako-radi">
+    <div class="container">
+      <h2 class="section-title">Kako radi dokuce.me?</h2>
+      <p class="section-sub">Tri jednostavna koraka od slanja do uručenja pošiljke.</p>
+      <div class="grid-3">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          </div>
+          <h3>Pošiljka se predaje agenciji</h3>
+          <p>Agencija za transfer kreira pošiljku i dobijaš jedinstveni tracking kod.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Status se ažurira uživo</h3>
+          <p>Agencija redovno unosi status — u tranzitu, stigla, spremna za preuzimanje.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Ti prativš u realnom vremenu</h3>
+          <p>Unosom koda na dokuce.me vidiš tačno gdje se pošiljka nalazi — kad god poželiš.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="prednosti">
+    <div class="container">
+      <h2 class="section-title">Zašto dokuce.me?</h2>
+      <p class="section-sub">Pravimo praćenje pošiljki jednostavnim i prijatnim za svakoga.</p>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <h3>Brzo</h3>
+          <p>Status pošiljke saznaš za nekoliko sekundi, bez čekanja na telefonu.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+          </div>
+          <h3>Transparentno</h3>
+          <p>Jasna istorija statusa, od preuzimanja do uručenja — sve na jednom mjestu.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          </div>
+          <h3>Dostupno svuda</h3>
+          <p>Sajt je prilagođen telefonu, tabletu i računaru — prati sa bilo kog uređaja.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Radiš u agenciji za transfer pošiljki?</h2>
+          <p>Prijavi se i ažuriraj status pošiljki u par klikova — korisnici odmah vide promjenu.</p>
+        </div>
+        <a href="/agencije.html" class="btn btn-primary">Prijava za agencije</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand"><img src="/assets/logo.svg" alt="" class="logo-mark"><span>dokuće</span></a>
+        <p>Prototip sajta za praćenje pošiljki. Pravimo ga da vidimo da li je ovakav servis zaista potreban — javi nam šta misliš.</p>
+      </div>
+      <div>
+        <h4>Navigacija</h4>
+        <ul>
+          <li><a href="#kako-radi">Kako radi</a></li>
+          <li><a href="#prednosti">Prednosti</a></li>
+          <li><a href="/agencije.html">Za agencije</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Jezik / Language</h4>
+        <ul>
+          <li><a href="/">Srpski</a></li>
+          <li><a href="/en/">English</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 dokuce.me — ovo je prototip, podaci su demonstracioni.</span>
+      <span>Napravljeno sa ❤ za testiranje ideje.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

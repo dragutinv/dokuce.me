@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dokuće — Online Shipment Tracking | dokuce.me</title>
+<meta name="description" content="Track your shipment in real time — enter your tracking code and see exactly where it is. Transfer agencies can update shipment status directly on dokuce.me.">
+<link rel="canonical" href="https://dokuce.me/en/">
+<link rel="alternate" hreflang="sr" href="https://dokuce.me/">
+<link rel="alternate" hreflang="en" href="https://dokuce.me/en/">
+<link rel="alternate" hreflang="x-default" href="https://dokuce.me/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="dokuće">
+<meta property="og:title" content="dokuće — Online Shipment Tracking">
+<meta property="og:description" content="Enter your tracking code and see exactly where your shipment is. Simple, fast, all the way home.">
+<meta property="og:url" content="https://dokuce.me/en/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="sr_ME">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#ff6b4a">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "dokuće",
+  "alternateName": "dokuce.me",
+  "url": "https://dokuce.me/en/",
+  "logo": "https://dokuce.me/assets/logo.svg",
+  "description": "Shipment and money-transfer tracking service — a prototype built to gauge interest.",
+  "sameAs": []
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/en/" class="brand">
+      <img src="/assets/logo.svg" alt="" class="logo-mark">
+      <span>dokuće<small>dokuce.me</small></span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#why-us">Why us</a>
+      <a href="/en/agencies.html">For agencies</a>
+      <div class="lang-switch" aria-label="Language switch">
+        <a href="/">SR</a>
+        <a href="/en/" class="active">EN</a>
+      </div>
+    </nav>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" data-nav-mobile aria-label="Mobile navigation">
+    <a href="#how-it-works">How it works</a>
+    <a href="#why-us">Why us</a>
+    <a href="/en/agencies.html">For agencies</a>
+    <div class="lang-switch">
+      <a href="/">SR</a>
+      <a href="/en/" class="active">EN</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-copy">
+        <span class="proto-badge">🚧 Prototype — testing interest</span>
+        <h1>Track your shipment, <span class="accent">all the way home.</span></h1>
+        <p class="lead">Enter your tracking code and instantly see where your shipment is — no phone calls, no waiting in line at the agency.</p>
+
+        <div class="track-card">
+          <form data-track-form class="track-form">
+            <label for="track-code" class="visually-hidden">Tracking code</label>
+            <input type="text" id="track-code" data-track-input placeholder="Enter tracking code, e.g. DK2026100123" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Track shipment</button>
+          </form>
+          <p class="track-hint">Don't have a code handy? <button type="button" data-demo-code>Try a demo shipment</button></p>
+          <p class="track-error" data-track-error></p>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img src="/assets/hero.svg" alt="Illustration of a shipment on its way home" width="420" height="420">
+      </div>
+    </div>
+  </section>
+
+  <section class="result-section" data-result-section>
+    <div class="container">
+      <div class="result-card">
+        <div class="result-head" data-result-head>
+          <div>
+            <h2>Shipment <span class="result-code" data-result-code></span></h2>
+            <div><strong>Sender:</strong> <span data-result-from></span> · <strong>Receiver:</strong> <span data-result-to></span></div>
+            <div><strong>Agency:</strong> <span data-result-agency></span></div>
+          </div>
+          <span class="status-pill" data-status-pill></span>
+        </div>
+        <ul class="timeline" data-timeline></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How does dokuce.me work?</h2>
+      <p class="section-sub">Three simple steps from drop-off to delivery.</p>
+      <div class="grid-3">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          </div>
+          <h3>Shipment is handed to an agency</h3>
+          <p>The transfer agency creates the shipment and you get a unique tracking code.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Status updates live</h3>
+          <p>The agency regularly updates the status — in transit, arrived, ready for pickup.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>You track it in real time</h3>
+          <p>Enter your code on dokuce.me to see exactly where your shipment is, any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="why-us">
+    <div class="container">
+      <h2 class="section-title">Why dokuce.me?</h2>
+      <p class="section-sub">We're making shipment tracking simple and pleasant for everyone.</p>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <h3>Fast</h3>
+          <p>Find out your shipment's status in seconds, no phone calls needed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+          </div>
+          <h3>Transparent</h3>
+          <p>A clear status history, from pickup to delivery — all in one place.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          </div>
+          <h3>Available everywhere</h3>
+          <p>The site adapts to phone, tablet and desktop — track from any device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-banner">
+        <div>
+          <h2>Do you work at a transfer agency?</h2>
+          <p>Log in and update shipment statuses in a couple of clicks — users see the change instantly.</p>
+        </div>
+        <a href="/en/agencies.html" class="btn btn-primary">Agency login</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/en/" class="brand"><img src="/assets/logo.svg" alt="" class="logo-mark"><span>dokuće</span></a>
+        <p>A prototype shipment-tracking site. We're building it to see whether this kind of service is actually needed — let us know what you think.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#why-us">Why us</a></li>
+          <li><a href="/en/agencies.html">For agencies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Language</h4>
+        <ul>
+          <li><a href="/">Srpski</a></li>
+          <li><a href="/en/">English</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 dokuce.me — this is a prototype, data shown is for demonstration only.</span>
+      <span>Made with ❤ to test an idea.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

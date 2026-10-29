@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prijava za agencije — dokuce.me</title>
+<meta name="description" content="Prijava za agencije za transfer pošiljki. Ažuriraj status pošiljke i korisnici odmah vide promjenu na dokuce.me.">
+<link rel="canonical" href="https://dokuce.me/agencije.html">
+<link rel="alternate" hreflang="sr" href="https://dokuce.me/agencije.html">
+<link rel="alternate" hreflang="en" href="https://dokuce.me/en/agencies.html">
+<link rel="alternate" hreflang="x-default" href="https://dokuce.me/agencije.html">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#ff6b4a">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <img src="/assets/logo.svg" alt="" class="logo-mark">
+      <span>dokuće<small>dokuce.me</small></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Glavna navigacija">
+      <a href="/#kako-radi">Kako radi</a>
+      <a href="/#prednosti">Prednosti</a>
+      <a href="/agencije.html">Za agencije</a>
+      <div class="lang-switch">
+        <a href="/agencije.html" class="active">SR</a>
+        <a href="/en/agencies.html">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Otvori meni">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" data-nav-mobile aria-label="Mobilna navigacija">
+    <a href="/#kako-radi">Kako radi</a>
+    <a href="/#prednosti">Prednosti</a>
+    <a href="/agencije.html">Za agencije</a>
+    <div class="lang-switch">
+      <a href="/agencije.html" class="active">SR</a>
+      <a href="/en/agencies.html">EN</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="auth-wrap" data-auth-wrap>
+    <div class="auth-card">
+      <span class="proto-badge">🚧 Demo prijava</span>
+      <h1>Prijava za agencije</h1>
+      <p class="sub">Uloguj se da bi ažurirao/la status pošiljki koje je preuzela tvoja agencija.</p>
+
+      <p class="auth-error" data-login-error></p>
+
+      <form data-login-form>
+        <div class="field">
+          <label for="username">Korisničko ime</label>
+          <input type="text" id="username" name="username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Lozinka</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Prijavi se</button>
+      </form>
+
+      <div class="demo-hint">
+        Ovo je prototip bez pravog servera — uloguj se demo nalogom: <br>
+        korisničko ime <code>demo</code>, lozinka <code>demo</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-wrap" data-dash-wrap>
+    <div class="container">
+      <div class="dash-top">
+        <div>
+          <h1>Zdravo, <span data-agency-name></span> 👋</h1>
+          <p>Ažuriraj status pošiljki — promjena je odmah vidljiva na stranici za praćenje.</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" data-logout>Odjavi se</button>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel">
+          <h2>Pošiljke tvoje agencije</h2>
+          <ul class="shipment-list" data-shipment-list></ul>
+        </div>
+
+        <div class="panel">
+          <h2>Ažuriraj / kreiraj pošiljku</h2>
+          <form data-update-form>
+            <div class="field">
+              <label for="u-code">Broj pošiljke</label>
+              <input type="text" id="u-code" data-update-code placeholder="npr. DK2026100999" required>
+            </div>
+            <div class="field">
+              <label for="u-status">Status</label>
+              <select id="u-status" data-update-status></select>
+            </div>
+            <div class="field">
+              <label for="u-location">Lokacija (opciono)</label>
+              <input type="text" id="u-location" data-update-location placeholder="npr. Podgorica, ME">
+            </div>
+            <div class="field">
+              <label for="u-sender">Pošiljalac (opciono)</label>
+              <input type="text" id="u-sender" data-update-sender placeholder="Ime i prezime, grad">
+            </div>
+            <div class="field">
+              <label for="u-receiver">Primalac (opciono)</label>
+              <input type="text" id="u-receiver" data-update-receiver placeholder="Ime i prezime, grad">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sačuvaj status</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast" data-toast></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 dokuce.me — ovo je prototip, podaci su demonstracioni.</span>
+      <a href="/">Nazad na početnu</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script src="/js/agency.js"></script>
+</body>
+</html>

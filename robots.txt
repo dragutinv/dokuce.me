@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /agencije.html
+Disallow: /en/agencies.html
+
+Sitemap: https://dokuce.me/sitemap.xml

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Login — dokuce.me</title>
+<meta name="description" content="Login for transfer agencies. Update shipment status and users instantly see the change on dokuce.me.">
+<link rel="canonical" href="https://dokuce.me/en/agencies.html">
+<link rel="alternate" hreflang="sr" href="https://dokuce.me/agencije.html">
+<link rel="alternate" hreflang="en" href="https://dokuce.me/en/agencies.html">
+<link rel="alternate" hreflang="x-default" href="https://dokuce.me/agencije.html">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#ff6b4a">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/en/" class="brand">
+      <img src="/assets/logo.svg" alt="" class="logo-mark">
+      <span>dokuće<small>dokuce.me</small></span>
+    </a>
+    <nav class="nav-desktop" aria-label="Main navigation">
+      <a href="/en/#how-it-works">How it works</a>
+      <a href="/en/#why-us">Why us</a>
+      <a href="/en/agencies.html">For agencies</a>
+      <div class="lang-switch">
+        <a href="/agencije.html">SR</a>
+        <a href="/en/agencies.html" class="active">EN</a>
+      </div>
+    </nav>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" data-nav-mobile aria-label="Mobile navigation">
+    <a href="/en/#how-it-works">How it works</a>
+    <a href="/en/#why-us">Why us</a>
+    <a href="/en/agencies.html">For agencies</a>
+    <div class="lang-switch">
+      <a href="/agencije.html">SR</a>
+      <a href="/en/agencies.html" class="active">EN</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="auth-wrap" data-auth-wrap>
+    <div class="auth-card">
+      <span class="proto-badge">🚧 Demo login</span>
+      <h1>Agency login</h1>
+      <p class="sub">Log in to update the status of shipments picked up by your agency.</p>
+
+      <p class="auth-error" data-login-error></p>
+
+      <form data-login-form>
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <div class="demo-hint">
+        This is a prototype with no real server — log in with the demo account: <br>
+        username <code>demo</code>, password <code>demo</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-wrap" data-dash-wrap>
+    <div class="container">
+      <div class="dash-top">
+        <div>
+          <h1>Hi, <span data-agency-name></span> 👋</h1>
+          <p>Update shipment statuses — the change is instantly visible on the tracking page.</p>
+        </div>
+        <button class="btn btn-ghost btn-sm" data-logout>Log out</button>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel">
+          <h2>Your agency's shipments</h2>
+          <ul class="shipment-list" data-shipment-list></ul>
+        </div>
+
+        <div class="panel">
+          <h2>Update / create shipment</h2>
+          <form data-update-form>
+            <div class="field">
+              <label for="u-code">Tracking code</label>
+              <input type="text" id="u-code" data-update-code placeholder="e.g. DK2026100999" required>
+            </div>
+            <div class="field">
+              <label for="u-status">Status</label>
+              <select id="u-status" data-update-status></select>
+            </div>
+            <div class="field">
+              <label for="u-location">Location (optional)</label>
+              <input type="text" id="u-location" data-update-location placeholder="e.g. Podgorica, ME">
+            </div>
+            <div class="field">
+              <label for="u-sender">Sender (optional)</label>
+              <input type="text" id="u-sender" data-update-sender placeholder="Full name, city">
+            </div>
+            <div class="field">
+              <label for="u-receiver">Receiver (optional)</label>
+              <input type="text" id="u-receiver" data-update-receiver placeholder="Full name, city">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Save status</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast" data-toast></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 dokuce.me — this is a prototype, data shown is for demonstration only.</span>
+      <a href="/en/">Back to home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script src="/js/agency.js"></script>
+</body>
+</html>
