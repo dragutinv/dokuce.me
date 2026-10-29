@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dokuće — Praćenje pošiljke onlajn | dokuce.me</title>
-<meta name="description" content="Prati svoju pošiljku u realnom vremenu — unesi tracking kod i saznaj gdje se nalazi. Agencije za transfer pošiljki mogu da ažuriraju status direktno na dokuce.me.">
+
+<!-- Google Analytics (GA4) — zameni G-XXXXXXXXXX svojim Measurement ID-jem iz analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<title>dokuće — Praćenje pošiljke između gradova | dokuce.me</title>
+<meta name="description" content="Pratite pošiljke koje putuju između gradova u realnom vremenu — unesite tracking kod i saznajte tačno gdje se nalaze. Agencije za transport pošiljki ažuriraju status direktno na dokuce.me.">
 <link rel="canonical" href="https://dokuce.me/">
 <link rel="alternate" hreflang="sr" href="https://dokuce.me/">
 <link rel="alternate" hreflang="en" href="https://dokuce.me/en/">
@@ -12,8 +22,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="dokuće">
-<meta property="og:title" content="dokuće — Praćenje pošiljke onlajn">
-<meta property="og:description" content="Unesi tracking kod i saznaj gdje se tačno nalazi tvoja pošiljka. Jednostavno, brzo, do kuće.">
+<meta property="og:title" content="dokuće — Praćenje pošiljke između gradova">
+<meta property="og:description" content="Unesi tracking kod i saznaj gdje se tačno nalazi tvoja pošiljka na putu između gradova. Jednostavno, brzo, do kuće.">
 <meta property="og:url" content="https://dokuce.me/">
 <meta property="og:locale" content="sr_ME">
 <meta property="og:locale:alternate" content="en_US">
@@ -34,7 +44,7 @@
   "alternateName": "dokuce.me",
   "url": "https://dokuce.me/",
   "logo": "https://dokuce.me/assets/logo.svg",
-  "description": "Servis za praćenje pošiljki i transfera novca — prototip za ispitivanje interesovanja korisnika.",
+  "description": "Servis za praćenje lokalnih pošiljki koje putuju između gradova — prototip za ispitivanje interesovanja korisnika.",
   "sameAs": []
 }
 </script>
@@ -78,8 +88,8 @@
     <div class="container">
       <div class="hero-copy">
         <span class="proto-badge">🚧 Prototip — testiramo interesovanje</span>
-        <h1>Prati svoju pošiljku, <span class="accent">pravo do kuće.</span></h1>
-        <p class="lead">Unesi broj pošiljke i odmah vidi gdje se trenutno nalazi — bez čekanja na telefonu i bez gužve u agenciji.</p>
+        <h1>Prati pošiljku između gradova, <span class="accent">pravo do kuće.</span></h1>
+        <p class="lead">Šalješ paket iz jednog grada u drugi? Unesi broj pošiljke i odmah vidi gdje se trenutno nalazi — bez čekanja na telefonu i bez gužve u agenciji.</p>
 
         <div class="track-card">
           <form data-track-form class="track-form">
@@ -104,6 +114,7 @@
         <div class="result-head" data-result-head>
           <div>
             <h2>Pošiljka <span class="result-code" data-result-code></span></h2>
+            <div class="result-route" data-result-route></div>
             <div><strong>Pošiljalac:</strong> <span data-result-from></span> · <strong>Primalac:</strong> <span data-result-to></span></div>
             <div><strong>Agencija:</strong> <span data-result-agency></span></div>
           </div>
@@ -125,7 +136,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
           </div>
           <h3>Pošiljka se predaje agenciji</h3>
-          <p>Agencija za transfer kreira pošiljku i dobijaš jedinstveni tracking kod.</p>
+          <p>Agencija u tvom gradu kreira pošiljku za grad primaoca i dobijaš jedinstveni tracking kod.</p>
         </div>
         <div class="step-card">
           <span class="step-num">2</span>

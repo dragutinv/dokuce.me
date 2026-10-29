@@ -1,15 +1,23 @@
 /* dokuce.me — demo data layer (prototype only, no real backend)
+   Scope: local shipments between cities within the same country (e.g. Montenegro).
    Everything lives in localStorage so the demo feels alive in the browser. */
 
-const DOKUCE_STORAGE_KEY = "dokuce_shipments_v1";
+const DOKUCE_STORAGE_KEY = "dokuce_shipments_v2";
 const DOKUCE_SESSION_KEY = "dokuce_agency_session_v1";
+
+/* Cities served by the demo agency network — used for the origin/destination pickers */
+const DOKUCE_CITIES = [
+  "Podgorica", "Nikšić", "Herceg Novi", "Bar", "Budva", "Bijelo Polje",
+  "Cetinje", "Pljevlja", "Berane", "Kotor", "Tivat", "Ulcinj",
+  "Rožaje", "Kolašin", "Danilovgrad", "Mojkovac",
+];
 
 /* Status steps, in order, with bilingual labels + icon key */
 const STATUS_STEPS = [
   { key: "created", sr: "Pošiljka kreirana", en: "Shipment created" },
   { key: "picked_up", sr: "Preuzeta od pošiljaoca", en: "Picked up from sender" },
-  { key: "in_transit", sr: "U tranzitu", en: "In transit" },
-  { key: "arrived", sr: "Stigla u zemlju primaoca", en: "Arrived in destination country" },
+  { key: "in_transit", sr: "U tranzitu između gradova", en: "In transit between cities" },
+  { key: "arrived", sr: "Stigla u grad primaoca", en: "Arrived in recipient's city" },
   { key: "ready", sr: "Spremna za preuzimanje", en: "Ready for pickup" },
   { key: "delivered", sr: "Isporučena primaocu", en: "Delivered to recipient" },
 ];
@@ -22,7 +30,8 @@ const DEMO_AGENCIES = [
   { username: "demo", password: "demo", name: "Dokuće Transfer Podgorica" },
 ];
 
-/* Seed demo shipments so a visitor can try tracking immediately */
+/* Seed demo shipments so a visitor can try tracking immediately — all routes are
+   local, between cities within the same country. */
 function seedDemoShipments() {
   const existing = localStorage.getItem(DOKUCE_STORAGE_KEY);
   if (existing) return;
@@ -32,43 +41,49 @@ function seedDemoShipments() {
 
   const seed = {
     "DK2026100123": {
-      sender: "Milica P., Podgorica",
-      receiver: "Jovan R., Novi Pazar",
+      sender: "Milica P.",
+      receiver: "Jovan R.",
+      fromCity: "Podgorica",
+      toCity: "Bijelo Polje",
       agencyName: "Dokuće Transfer Podgorica",
       currentIndex: 2,
       onHold: false,
       history: [
-        { key: "created", when: hoursAgo(50), location: "Podgorica, ME" },
-        { key: "picked_up", when: hoursAgo(46), location: "Podgorica, ME" },
-        { key: "in_transit", when: hoursAgo(20), location: "Bijelo Polje, ME" },
+        { key: "created", when: hoursAgo(26), location: "Podgorica" },
+        { key: "picked_up", when: hoursAgo(24), location: "Podgorica" },
+        { key: "in_transit", when: hoursAgo(6), location: "Kolašin" },
       ],
     },
     "DK2026100456": {
-      sender: "Stefan M., Nikšić",
-      receiver: "Ana K., Beograd",
+      sender: "Stefan M.",
+      receiver: "Ana K.",
+      fromCity: "Nikšić",
+      toCity: "Bar",
       agencyName: "Dokuće Transfer Nikšić",
       currentIndex: 5,
       onHold: false,
       history: [
-        { key: "created", when: hoursAgo(96), location: "Nikšić, ME" },
-        { key: "picked_up", when: hoursAgo(92), location: "Nikšić, ME" },
-        { key: "in_transit", when: hoursAgo(70), location: "Podgorica, ME" },
-        { key: "arrived", when: hoursAgo(40), location: "Beograd, RS" },
-        { key: "ready", when: hoursAgo(18), location: "Beograd, RS" },
-        { key: "delivered", when: hoursAgo(2), location: "Beograd, RS" },
+        { key: "created", when: hoursAgo(30), location: "Nikšić" },
+        { key: "picked_up", when: hoursAgo(28), location: "Nikšić" },
+        { key: "in_transit", when: hoursAgo(20), location: "Podgorica" },
+        { key: "arrived", when: hoursAgo(10), location: "Bar" },
+        { key: "ready", when: hoursAgo(6), location: "Bar" },
+        { key: "delivered", when: hoursAgo(1), location: "Bar" },
       ],
     },
     "DK2026100789": {
-      sender: "Ivana T., Herceg Novi",
-      receiver: "Marko S., Sarajevo",
+      sender: "Ivana T.",
+      receiver: "Marko S.",
+      fromCity: "Herceg Novi",
+      toCity: "Pljevlja",
       agencyName: "Dokuće Transfer Herceg Novi",
       currentIndex: 4,
       onHold: false,
       history: [
-        { key: "created", when: hoursAgo(30), location: "Herceg Novi, ME" },
-        { key: "picked_up", when: hoursAgo(28), location: "Herceg Novi, ME" },
-        { key: "in_transit", when: hoursAgo(15), location: "Podgorica, ME" },
-        { key: "arrived", when: hoursAgo(5), location: "Sarajevo, BA" },
+        { key: "created", when: hoursAgo(20), location: "Herceg Novi" },
+        { key: "picked_up", when: hoursAgo(18), location: "Herceg Novi" },
+        { key: "in_transit", when: hoursAgo(10), location: "Podgorica" },
+        { key: "arrived", when: hoursAgo(2), location: "Pljevlja" },
       ],
     },
   };
@@ -103,6 +118,8 @@ function upsertShipmentStatus(code, statusKey, location, agencyName) {
     all[normalized] = {
       sender: "",
       receiver: "",
+      fromCity: "",
+      toCity: "",
       agencyName: agencyName || "",
       currentIndex: 0,
       onHold: false,

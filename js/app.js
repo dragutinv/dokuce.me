@@ -65,6 +65,12 @@
     head.querySelector("[data-result-from]").textContent = shipment.sender || "—";
     head.querySelector("[data-result-to]").textContent = shipment.receiver || "—";
     head.querySelector("[data-result-agency]").textContent = shipment.agencyName || "—";
+    const routeEl = head.querySelector("[data-result-route]");
+    if (routeEl) {
+      routeEl.textContent = shipment.fromCity && shipment.toCity
+        ? `${shipment.fromCity} → ${shipment.toCity}`
+        : "—";
+    }
 
     pill.className = "status-pill";
     if (shipment.onHold) {

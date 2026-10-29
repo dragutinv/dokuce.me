@@ -101,6 +101,8 @@
   const locationInput = document.querySelector("[data-update-location]");
   const senderInput = document.querySelector("[data-update-sender]");
   const receiverInput = document.querySelector("[data-update-receiver]");
+  const fromCitySelect = document.querySelector("[data-update-from-city]");
+  const toCitySelect = document.querySelector("[data-update-to-city]");
   const updateForm = document.querySelector("[data-update-form]");
   const toast = document.querySelector("[data-toast]");
 
@@ -120,6 +122,23 @@
   }
   populateStatusOptions();
 
+  function populateCityOptions() {
+    [fromCitySelect, toCitySelect].forEach((select) => {
+      if (!select) return;
+      select.innerHTML = "";
+      DOKUCE_CITIES.forEach((city) => {
+        const opt = document.createElement("option");
+        opt.value = city;
+        opt.textContent = city;
+        select.appendChild(opt);
+      });
+    });
+    if (toCitySelect && toCitySelect.options.length > 1) {
+      toCitySelect.selectedIndex = 1;
+    }
+  }
+  populateCityOptions();
+
   function renderShipmentList() {
     if (!listEl) return;
     const all = getAllShipments();
@@ -137,9 +156,10 @@
       const label = shipment.onHold
         ? STATUS_HOLD[lang]
         : STATUS_STEPS[shipment.currentIndex][lang];
+      const route = shipment.fromCity && shipment.toCity ? `${shipment.fromCity} → ${shipment.toCity}` : "";
       li.innerHTML = `
         <div class="sl-code">${code}</div>
-        <div class="sl-meta">${label}${shipment.receiver ? " · " + shipment.receiver : ""}</div>
+        <div class="sl-meta">${route ? route + " · " : ""}${label}${shipment.receiver ? " · " + shipment.receiver : ""}</div>
       `;
       li.addEventListener("click", () => {
         document.querySelectorAll("[data-shipment-list] li").forEach((el) => el.classList.remove("active"));
@@ -148,6 +168,8 @@
         senderInput.value = shipment.sender || "";
         receiverInput.value = shipment.receiver || "";
         locationInput.value = "";
+        if (fromCitySelect && shipment.fromCity) fromCitySelect.value = shipment.fromCity;
+        if (toCitySelect && shipment.toCity) toCitySelect.value = shipment.toCity;
         statusSelect.value = shipment.onHold ? "on_hold" : STATUS_STEPS[shipment.currentIndex].key;
       });
       listEl.appendChild(li);
@@ -174,6 +196,8 @@
         all[normalized] = {
           sender: "",
           receiver: "",
+          fromCity: "",
+          toCity: "",
           agencyName: session ? session.name : "",
           currentIndex: 0,
           onHold: false,
@@ -186,6 +210,12 @@
       }
       if (receiverInput.value.trim()) {
         all[normalized].receiver = receiverInput.value.trim();
+      }
+      if (fromCitySelect && fromCitySelect.value) {
+        all[normalized].fromCity = fromCitySelect.value;
+      }
+      if (toCitySelect && toCitySelect.value) {
+        all[normalized].toCity = toCitySelect.value;
       }
       saveAllShipments(all);
 
@@ -200,6 +230,7 @@
       showToast(t.savedToast);
       updateForm.reset();
       populateStatusOptions();
+      populateCityOptions();
     });
   }
 })();

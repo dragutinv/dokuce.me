@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics (GA4) — zameni G-XXXXXXXXXX svojim Measurement ID-jem iz analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <title>Prijava za agencije — dokuce.me</title>
 <meta name="description" content="Prijava za agencije za transfer pošiljki. Ažuriraj status pošiljke i korisnici odmah vide promjenu na dokuce.me.">
 <link rel="canonical" href="https://dokuce.me/agencije.html">
@@ -102,20 +112,28 @@
               <input type="text" id="u-code" data-update-code placeholder="npr. DK2026100999" required>
             </div>
             <div class="field">
+              <label for="u-from-city">Grad slanja</label>
+              <select id="u-from-city" data-update-from-city></select>
+            </div>
+            <div class="field">
+              <label for="u-to-city">Grad primanja</label>
+              <select id="u-to-city" data-update-to-city></select>
+            </div>
+            <div class="field">
               <label for="u-status">Status</label>
               <select id="u-status" data-update-status></select>
             </div>
             <div class="field">
-              <label for="u-location">Lokacija (opciono)</label>
-              <input type="text" id="u-location" data-update-location placeholder="npr. Podgorica, ME">
+              <label for="u-location">Trenutna lokacija (opciono)</label>
+              <input type="text" id="u-location" data-update-location placeholder="npr. Danilovgrad, na putu">
             </div>
             <div class="field">
               <label for="u-sender">Pošiljalac (opciono)</label>
-              <input type="text" id="u-sender" data-update-sender placeholder="Ime i prezime, grad">
+              <input type="text" id="u-sender" data-update-sender placeholder="Ime i prezime">
             </div>
             <div class="field">
               <label for="u-receiver">Primalac (opciono)</label>
-              <input type="text" id="u-receiver" data-update-receiver placeholder="Ime i prezime, grad">
+              <input type="text" id="u-receiver" data-update-receiver placeholder="Ime i prezime">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Sačuvaj status</button>
           </form>

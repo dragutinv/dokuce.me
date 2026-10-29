@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dokuće — Online Shipment Tracking | dokuce.me</title>
-<meta name="description" content="Track your shipment in real time — enter your tracking code and see exactly where it is. Transfer agencies can update shipment status directly on dokuce.me.">
+
+<!-- Google Analytics (GA4) — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<title>dokuće — Track Shipments Between Cities | dokuce.me</title>
+<meta name="description" content="Track local shipments travelling between cities in real time — enter your tracking code and see exactly where it is. Transport agencies update shipment status directly on dokuce.me.">
 <link rel="canonical" href="https://dokuce.me/en/">
 <link rel="alternate" hreflang="sr" href="https://dokuce.me/">
 <link rel="alternate" hreflang="en" href="https://dokuce.me/en/">
@@ -12,8 +22,8 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="dokuće">
-<meta property="og:title" content="dokuće — Online Shipment Tracking">
-<meta property="og:description" content="Enter your tracking code and see exactly where your shipment is. Simple, fast, all the way home.">
+<meta property="og:title" content="dokuće — Track Shipments Between Cities">
+<meta property="og:description" content="Enter your tracking code and see exactly where your shipment is on its way between cities. Simple, fast, all the way home.">
 <meta property="og:url" content="https://dokuce.me/en/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="sr_ME">
@@ -34,7 +44,7 @@
   "alternateName": "dokuce.me",
   "url": "https://dokuce.me/en/",
   "logo": "https://dokuce.me/assets/logo.svg",
-  "description": "Shipment and money-transfer tracking service — a prototype built to gauge interest.",
+  "description": "A tracking service for local shipments travelling between cities — a prototype built to gauge interest.",
   "sameAs": []
 }
 </script>
@@ -78,8 +88,8 @@
     <div class="container">
       <div class="hero-copy">
         <span class="proto-badge">🚧 Prototype — testing interest</span>
-        <h1>Track your shipment, <span class="accent">all the way home.</span></h1>
-        <p class="lead">Enter your tracking code and instantly see where your shipment is — no phone calls, no waiting in line at the agency.</p>
+        <h1>Track your shipment between cities, <span class="accent">all the way home.</span></h1>
+        <p class="lead">Sending a package from one city to another? Enter your tracking code and instantly see where it is — no phone calls, no waiting in line at the agency.</p>
 
         <div class="track-card">
           <form data-track-form class="track-form">
@@ -104,6 +114,7 @@
         <div class="result-head" data-result-head>
           <div>
             <h2>Shipment <span class="result-code" data-result-code></span></h2>
+            <div class="result-route" data-result-route></div>
             <div><strong>Sender:</strong> <span data-result-from></span> · <strong>Receiver:</strong> <span data-result-to></span></div>
             <div><strong>Agency:</strong> <span data-result-agency></span></div>
           </div>
@@ -125,7 +136,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
           </div>
           <h3>Shipment is handed to an agency</h3>
-          <p>The transfer agency creates the shipment and you get a unique tracking code.</p>
+          <p>The agency in your city creates the shipment for the receiver's city and you get a unique tracking code.</p>
         </div>
         <div class="step-card">
           <span class="step-num">2</span>

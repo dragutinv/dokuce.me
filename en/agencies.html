@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics (GA4) — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <title>Agency Login — dokuce.me</title>
 <meta name="description" content="Login for transfer agencies. Update shipment status and users instantly see the change on dokuce.me.">
 <link rel="canonical" href="https://dokuce.me/en/agencies.html">
@@ -102,20 +112,28 @@
               <input type="text" id="u-code" data-update-code placeholder="e.g. DK2026100999" required>
             </div>
             <div class="field">
+              <label for="u-from-city">Origin city</label>
+              <select id="u-from-city" data-update-from-city></select>
+            </div>
+            <div class="field">
+              <label for="u-to-city">Destination city</label>
+              <select id="u-to-city" data-update-to-city></select>
+            </div>
+            <div class="field">
               <label for="u-status">Status</label>
               <select id="u-status" data-update-status></select>
             </div>
             <div class="field">
-              <label for="u-location">Location (optional)</label>
-              <input type="text" id="u-location" data-update-location placeholder="e.g. Podgorica, ME">
+              <label for="u-location">Current location (optional)</label>
+              <input type="text" id="u-location" data-update-location placeholder="e.g. Danilovgrad, en route">
             </div>
             <div class="field">
               <label for="u-sender">Sender (optional)</label>
-              <input type="text" id="u-sender" data-update-sender placeholder="Full name, city">
+              <input type="text" id="u-sender" data-update-sender placeholder="Full name">
             </div>
             <div class="field">
               <label for="u-receiver">Receiver (optional)</label>
-              <input type="text" id="u-receiver" data-update-receiver placeholder="Full name, city">
+              <input type="text" id="u-receiver" data-update-receiver placeholder="Full name">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Save status</button>
           </form>
