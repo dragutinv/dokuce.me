@@ -2,7 +2,7 @@
    Scope: local shipments between cities within the same country (e.g. Montenegro).
    Everything lives in localStorage so the demo feels alive in the browser. */
 
-const DOKUCE_STORAGE_KEY = "dokuce_shipments_v2";
+const DOKUCE_STORAGE_KEY = "dokuce_shipments_v3";
 const DOKUCE_SESSION_KEY = "dokuce_agency_session_v1";
 
 /* Cities served by the demo agency network — used for the origin/destination pickers */
@@ -40,7 +40,7 @@ function seedDemoShipments() {
   const hoursAgo = (h) => new Date(now - h * 3600 * 1000).toISOString();
 
   const seed = {
-    "DK2026100123": {
+    "ME2026100123": {
       sender: "Milica P.",
       receiver: "Jovan R.",
       fromCity: "Podgorica",
@@ -54,7 +54,7 @@ function seedDemoShipments() {
         { key: "in_transit", when: hoursAgo(6), location: "Kolašin" },
       ],
     },
-    "DK2026100456": {
+    "ME2026100456": {
       sender: "Stefan M.",
       receiver: "Ana K.",
       fromCity: "Nikšić",
@@ -71,7 +71,7 @@ function seedDemoShipments() {
         { key: "delivered", when: hoursAgo(1), location: "Bar" },
       ],
     },
-    "DK2026100789": {
+    "ME2026100789": {
       sender: "Ivana T.",
       receiver: "Marko S.",
       fromCity: "Herceg Novi",

@@ -124,7 +124,7 @@
 
   if (demoBtn) {
     demoBtn.addEventListener("click", () => {
-      input.value = "DK2026100123";
+      input.value = "ME2026100123";
       doLookup(input.value);
     });
   }

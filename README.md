@@ -20,9 +20,9 @@ lozinka: demo
 ## Demo kodovi za praćenje
 
 ```
-DK2026100123  — Podgorica → Bijelo Polje, u tranzitu
-DK2026100456  — Nikšić → Bar, isporučena
-DK2026100789  — Herceg Novi → Pljevlja, stigla u grad primaoca
+ME2026100123  — Podgorica → Bijelo Polje, u tranzitu
+ME2026100456  — Nikšić → Bar, isporučena
+ME2026100789  — Herceg Novi → Pljevlja, stigla u grad primaoca
 ```
 
 ## Google Analytics
